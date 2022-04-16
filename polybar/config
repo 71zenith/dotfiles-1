@@ -26,7 +26,7 @@ font-0 = Iosevka Nerd Font:style=semibold:pixelsize=14;3
 font-1 = JoyPixels:style=Regular:scale=9;2.5
 
 modules-left = bspwm xwindow
-modules-right = uptime time date pulseaudio
+modules-right = network uptime time date pulseaudio
 
 tray-position = right
 cursor-click = pointer
@@ -50,6 +50,17 @@ label-urgent-padding = 2
 label-empty = %name%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
+
+[module/network]
+type = internal/network
+interface = enp7s0
+format-connected = <label-connected>
+label-connected = 🔼 %upspeed%  🔽 %downspeed%
+label-connected-foreground = 008080
+
+label-disconnected = 🔌 Not connected
+label-disconnected-foreground = 66ffffff
+
 
 [module/date]
 type = internal/date
