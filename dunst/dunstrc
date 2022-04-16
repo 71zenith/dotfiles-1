@@ -1,0 +1,19 @@
+[global]
+		frame_width = 2
+		font = Iosevka Nerd Font 12
+		show_indicators = no
+		history_length = 500
+		alignment = center
+
+[urgency_normal]
+		background = "#2b2b2b"
+		foreground = "#ffffff"
+		timeout = 5
+		default_icon = /home/zen/.config/dunst/normal.png
+
+[mocp]
+		summary = "🎵 Now playing 🎵"
+		new_icon = /home/zen/.config/dunst/music.png
+		set_stack_tag = true
+
+# vim: ft=cfg

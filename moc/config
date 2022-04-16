@@ -1,0 +1,11 @@
+MusicDir = ~/mc
+StartInMusicDir = yes
+Sort = FileName
+Repeat = yes
+AutoNext = yes
+Theme = minimal
+Keymap = keys
+Layout1 = directory(0,0,100%,100%)
+OnSongChange = /home/zen/.local/bin/notify_song
+HideFileExtension = yes
+ShowFormat = no

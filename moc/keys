@@ -1,0 +1,17 @@
+quit                  = END
+quit_client           = HOME
+go                    = ENTER
+menu_down             = j
+menu_up               = k
+menu_page_down        = G
+menu_page_up          = g
+search_menu           = /
+next_search           = n
+help                  = ?
+reload                = r
+seek_forward_fast     = L
+seek_backward_fast    = H
+pause                 = SPACE
+previous              = p
+next                  = n
+stop                  = s

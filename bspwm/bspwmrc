@@ -1,0 +1,35 @@
+#!/bin/sh
+bspc rule -r "*"
+
+pgrep -x sxhkd > /dev/null || sxhkd 2> /tmp/sxhkd.log &
+picom 2> /tmp/picom.log &
+dunst 2> /tmp/dunst.log &
+CM_SELECTIONS=clipboard clipmenud 2> /tmp/clipmenu.log &
+killall -q polybar
+xwallpaper --zoom ~/.config/bspwm/bg.png
+polybar mybar 2>&1 >/tmp/polybar.log &
+pgrep bspswallow || bspswallow &
+
+bspc monitor -d tv www dev chat trash
+
+bspc config focus_follows_pointer	true
+
+bspc config border_width	3
+bspc config window_gap		0
+
+bspc config split_ratio		0.55
+bspc config borderless_monocle	true
+bspc config ignore_ewmh_focus true
+bspc config automatic_scheme alternate
+
+bspc config pointer_modifier mod1
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+
+bspc rule -a Zathura state=tiled
+bspc rule -a VSCodium desktop=^3
+bspc rule -a discord follow=off focus=off desktop=^4
+bspc rule -a scratchpad sticky=on state=floating hidden=on locked=on
+
+[ "$(pgrep -c 'mocp')" != "2" ] && alacritty --option window.opacity=1.0 --option font.size=14.5 --class scratchpad,scratchpad -e scratch

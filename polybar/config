@@ -1,0 +1,96 @@
+[colors]
+background = #222
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #FFFF00
+secondary = #e60053
+alert = #bd2c40
+
+[bar/mybar]
+width = 100%
+height = 30
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+padding-left = 0
+padding-right = 1
+
+module-margin-right = 2
+
+font-0 = Iosevka Nerd Font:style=semibold:pixelsize=14;3
+font-1 = JoyPixels:style=Regular:scale=9;2.5
+
+modules-left = bspwm xwindow
+modules-right = uptime time date pulseaudio
+
+tray-position = right
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %name%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %name%
+label-occupied-padding = 2
+
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %name%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+[module/date]
+type = internal/date
+date = %a %d %b
+
+format-foreground = #0a6cf5
+
+label =📅 %date%
+
+[module/time]
+type = internal/date
+interval = 5
+time = %H:%M
+
+format-foreground = #FF1493
+
+label = 🕘 %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+label-volume = 🔊 %percentage%%
+label-volume-foreground = #228B22
+
+label-muted = 🔇 Muted
+label-muted-foreground = #bd2c40
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:90:...%
+format-foreground = #87CEFA
+
+[module/uptime]
+type = custom/script
+exec = uptime -p | sed -e 's/up //' -e 's/\ years\?,/y/' -e 's/\ weeks\?,/w/' -e 's/\ days\?,/d/' -e 's/\ hours\?,\?/h/' -e 's/\ minutes\?/m/'
+format-prefix = "🖥️ "
+interval = 30
+format-foreground = #5F9EA0
+
+[settings]
+screenchange-reload = true
+
+; vim:ft=dosini

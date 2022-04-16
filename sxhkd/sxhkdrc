@@ -1,0 +1,129 @@
+# misc {{{
+# terminal emulator
+alt + Return
+	alacritty
+
+# minimize window
+alt + shift + {m,n}
+	bsphide {1,2}
+
+# make sxhkd reload its configuration files
+alt + Escape
+	pkill -USR1 -x sxhkd
+
+# moc scratchpad
+alt + shift + Return
+	bspc node $(cat /tmp/scratchid) -g hidden;bspc node -f $(cat /tmp/scratchid)
+
+# set the window state
+alt + shift + s
+	bspc node -t {floating,tiled}
+#}}}
+ 
+# bspwm hotkeys {{{
+# restart bspwm
+alt + shift +r
+	bspc wm -r
+
+# kill bspwm
+alt + shift + q
+	bspc quit
+
+# close an application
+alt + x
+	bspc node -c
+# kill an application
+alt + q
+	bspc node -k
+# alternate between the tiled and monocle layout
+alt + t
+	bspc desktop -l next
+# }}}
+
+# focus/swap {{{
+# swap the node in the given direction
+alt + control + {h,j,k,l}
+	bspc node -s {west,south,north,east}.local
+
+# focus the next/previous window in the current desktop
+alt + {l,h}
+	bspc node -f {next,prev}.local.!hidden.window
+alt + {_,shift} + Tab
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus or send to the given desktop
+alt + {_,shift + }{1-6,0}
+	bspc {desktop -f,node -d} '^{1-6,10}'
+# }}}
+
+# move/resize {{{
+
+# expand a window by moving one of its side outward
+alt + shift + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# rotate a window
+ctrl + alt + {n,p}
+	bspc node @/ -R '{+90,-90}'
+# }}}
+
+# volume control {{{
+XF86AudioLowerVolume
+	pulsemixer --change-volume -5
+XF86AudioRaiseVolume
+	pulsemixer --change-volume +5
+XF86AudioMute
+	pulsemixer --toggle-mute
+
+super + 1
+	pulsemixer --change-volume +5
+super + 2 
+	pulsemixer --change-volume -5
+super + 3
+	pulsemixer --toggle-mute
+# }}}
+
+# launch application {{{
+alt + e
+	alacritty -e lfrun
+alt + shift + c
+	killall Discord || discord
+alt + shift + a
+  alacritty -e nvim
+alt + shift + e
+	vscodium
+# }}}
+
+# custom dmenu prompts {{{
+alt + shift + {f,p}
+	dmenu_bookmarks {firefox,"firefox --private-window"}
+alt + shift + g
+	clipmenu -l 15 -i
+alt + c ; {e,g}
+	dmenu_icons {emojis,glyphs}
+alt + {f,g} ; {a,y,g,s,w,m}
+	dmenu_search {firefox,"firefox --private-window"} {ArchWiki,Youtube,Github,Search,1337x,Animixplay}
+# }}}
+
+# media control {{{
+ctrl + 1
+	mocp -M ~/.config/moc/ -G
+ctrl + 2
+	mocp -M ~/.config/moc/ -f
+ctrl + 3
+	mocp -M ~/.config/moc/ -r
+
+XF86AudioPlay
+	mocp -M ~/.config/moc/ -G
+XF86AudioNext
+	mocp -M ~/.config/moc/ -f
+XF86AudioPrev
+	mocp -M ~/.config/moc/ -r
+
+ctrl + q
+	playerctl --player=firefox play-pause
+ctrl + Escape
+	playerctl --player=mpv play-pause
+# }}}
+
+# vim:foldmethod=marker
