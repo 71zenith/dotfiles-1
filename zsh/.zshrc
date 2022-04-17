@@ -85,11 +85,13 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
 # for fzf-tab
-source ~/.config/zsh/fzf-tab/fzf-tab.plugin.zsh
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'fzf-preview ${(Q)realpath}'
-zstyle ':fzf-tab:complete:git:*' fzf-preview 'git help $word | bat -plman --color=always'
-zstyle ':fzf-tab:complete:git-*:*' fzf-preview 'git log --color=always $word'
-zstyle ':fzf-tab:complete:git-help:*' fzf-preview 'git help $word | bat -plman --color=always'
+if [ "$TERM" != "xterm-256color" ]; then
+	source ~/.config/zsh/fzf-tab/fzf-tab.plugin.zsh
+	zstyle ':fzf-tab:complete:*:*' fzf-preview 'fzf-preview ${(Q)realpath}'
+	zstyle ':fzf-tab:complete:git:*' fzf-preview 'git help $word | bat -plman --color=always'
+	zstyle ':fzf-tab:complete:git-*:*' fzf-preview 'git log --color=always $word'
+	zstyle ':fzf-tab:complete:git-help:*' fzf-preview 'git help $word | bat -plman --color=always'
+fi
 
 # prompt
 autoload -U promptinit; promptinit
