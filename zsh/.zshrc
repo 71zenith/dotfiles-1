@@ -96,4 +96,8 @@ fi
 # prompt
 autoload -U promptinit; promptinit
 prompt spaceship
+
+if [ "$TERM" != "xterm-256color" ]; then
+	zfetch
+fi
 # vim:foldmethod=marker
