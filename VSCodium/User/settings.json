@@ -33,10 +33,10 @@
     "workbench.startupEditor": "none",
     "editor.cursorSurroundingLines": 10,
     "editor.lineNumbers": "relative",
-    "workbench.colorTheme": "Default Material Dark Theme",
     "explorer.confirmDelete": false,
     "files.autoSave": "afterDelay",
     "editor.formatOnSave": true,
     "editor.snippetSuggestions": "top",
-    "window.zoomLevel": 2
+    "window.zoomLevel": 2,
+    "workbench.colorTheme": "Material Theme Darker"
 }
