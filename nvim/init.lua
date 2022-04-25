@@ -60,7 +60,7 @@ require("toggleterm").setup({
 })
 
 vim.g.nvim_tree_width = 25
-require'nvim-tree'.setup {auto_open = 1, auto_close = 1, gitignore = 1}
+require'nvim-tree'.setup {auto_open = 1, gitignore = 1}
 
 require("indent_blankline").setup {
     show_current_context = true,
